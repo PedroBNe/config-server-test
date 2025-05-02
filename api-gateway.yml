@@ -11,6 +11,19 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+        routes:
+          - id: auth-service
+            uri: lb://auth-service
+            predicates:
+              - Path=/usuario/**
+          - id: vehicle-service
+            uri: lb://vehicle-service
+            predicates:
+              - Path=/vehicle/**
+          - id: sales-service
+            uri: lb://sales-service
+            predicates:
+              - Path=/sales/**
 
 eureka:
   client:
